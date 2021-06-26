@@ -41,3 +41,22 @@ variable "private_subnets_cidr" {
   type        = list(any)
   description = "AWS Private Subnets"
 }
+
+/* 
+EKS Variables
+*/
+
+variable "eks_cluster_version" {
+  type        = string
+  description = "EKS Cluster Version"
+}
+
+variable "module_eks_repo" {
+  type        = string
+  description = "EKS module repo"
+}
+
+variable "eks_volume_type" {
+  type        = string
+  description = "EKS volume type"
+}

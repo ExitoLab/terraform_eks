@@ -4,7 +4,6 @@
 *.tfplan
 *.tfstate.backup
 .terraform/*
-.terraform
 .terraform/modules
 
 # .tfstate files
@@ -19,3 +18,6 @@ crash.log
 
 .DS_Store
 *.terraform.lock.hcl
+
+#kubeconfig file
+kubeconfig_poc-lab-eks
