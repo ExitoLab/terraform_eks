@@ -17,7 +17,6 @@ variable "region" {
   description = "AWS region"
 }
 
-
 /* 
 VPC variables
 */
