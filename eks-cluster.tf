@@ -16,20 +16,14 @@ module "eks" {
     root_volume_type = var.eks_volume_type
   }
 
-  worker_groups = [
+  worker_groups_launch_template = [
     {
-      name                          = "worker-group-1"
-      instance_type                 = "t2.small"
-      additional_userdata           = "echo foo bar"
-      asg_desired_capacity          = 2
-      additional_security_group_ids = [aws_security_group.worker_group_mgmt_one.id]
-    },
-    {
-      name                          = "worker-group-2"
-      instance_type                 = "t2.medium"
-      additional_userdata           = "echo foo bar"
-      additional_security_group_ids = [aws_security_group.worker_group_mgmt_two.id]
-      asg_desired_capacity          = 1
+      name                 = "jenkins-spot"
+      spot_instance_pools  = 2
+      asg_max_size         = 2
+      asg_desired_capacity = 2
+      kubelet_extra_args   = "--node-labels=node.kubernetes.io/lifecycle=spot"
+      public_ip            = false
     },
   ]
 }
